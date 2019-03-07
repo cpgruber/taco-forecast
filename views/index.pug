@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  section
+    .hover
+      - for (var i = 0; i < 9; i++) {
+        .tilt
+      - }
+      .content.content-front(style={ 'background-image': `url(${backgroundUrl})` })
+        div #{response}
+      .content.content-back
+        div #{title}

@@ -1,0 +1,56 @@
+@function transformX($i){
+  $m: $i % 3;
+  @if $m == 0  {
+    @return left;
+  }
+  @if $m == 1  {
+    @return right;
+  }
+  @return center;
+}
+
+@function transformY($i){
+  @if $i <= 3  {
+    @return top;
+  }
+  @if $i <= 6  {
+    @return center;
+  }
+  @return bottom;
+}
+
+@function rX($y, $amt: 3deg){
+  @if $y == top {
+    @return $amt;
+  }
+  @if $y == bottom {
+    @return $amt * -1;
+  }
+  @return 0;
+}
+
+@function rY($x, $amt: 3deg){
+  @if $x == left {
+    @return $amt;
+  }
+  @if $x == right {
+    @return $amt * -1;
+  }
+  @return 0;
+}
+
+@function rZ($x, $y, $amt: 2deg){
+  $c: 0;
+  @if $x == left {
+    $c: -1;
+  }
+  @if $x == right {
+    $c: 1;
+  }
+
+  @if $y == center {
+    $amt: 0;
+  }
+
+  @return $c * $amt;
+}

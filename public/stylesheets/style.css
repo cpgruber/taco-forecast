@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+* {
+  margin: 0;
+  box-sizing: border-box; }
+
+html, body {
+  height: 100%; }
+
+body {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+section {
+  position: relative;
+  height: 250px;
+  width: 400px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+  opacity: 0;
+  animation: fade-in 1s linear 1s 1 forwards; }
+
+.content {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 4px;
+  background: rgba(255, 0, 0, 0.2);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+  transform: rotateY(180deg);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-size: cover; }
+
+.content-front {
+  opacity: 0; }
+
+.content-back {
+  background: linear-gradient(to right, #ffaf4b 0%, #ff920a 100%); }
+
+.content-back * {
+  transform: rotateY(180deg); }
+
+.hover {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-content: stretch;
+  flex-wrap: wrap; }
+
+.hover > .tilt {
+  height: calc(100% / 3);
+  flex-basis: calc(100% / 3);
+  z-index: 2; }
+
+.tilt:nth-of-type(1):hover ~ .content,
+.tilt:nth-of-type(1).clicked ~ .content {
+  transform-origin: right top;
+  transform: perspective(1000px) rotateX(3deg) rotateY(-3deg) rotateZ(2deg);
+  box-shadow: 5px -5px 25px rgba(0, 0, 0, 0.3); }
+
+.tilt:nth-of-type(2):hover ~ .content,
+.tilt:nth-of-type(2).clicked ~ .content {
+  transform-origin: center top;
+  transform: perspective(1000px) rotateX(3deg) rotateY(0) rotateZ(0deg);
+  box-shadow: 5px 0 25px rgba(0, 0, 0, 0.3); }
+
+.tilt:nth-of-type(3):hover ~ .content,
+.tilt:nth-of-type(3).clicked ~ .content {
+  transform-origin: left top;
+  transform: perspective(1000px) rotateX(3deg) rotateY(3deg) rotateZ(-2deg);
+  box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.3); }
+
+.tilt:nth-of-type(4):hover ~ .content,
+.tilt:nth-of-type(4).clicked ~ .content {
+  transform-origin: right center;
+  transform: perspective(1000px) rotateX(0) rotateY(-3deg) rotateZ(0);
+  box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.3); }
+
+.tilt:nth-of-type(5):hover ~ .content,
+.tilt:nth-of-type(5).clicked ~ .content {
+  transform-origin: center center;
+  transform: perspective(1000px) rotateX(0) rotateY(0) rotateZ(0);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3); }
+
+.tilt:nth-of-type(6):hover ~ .content,
+.tilt:nth-of-type(6).clicked ~ .content {
+  transform-origin: left center;
+  transform: perspective(1000px) rotateX(0) rotateY(3deg) rotateZ(0);
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3); }
+
+.tilt:nth-of-type(7):hover ~ .content,
+.tilt:nth-of-type(7).clicked ~ .content {
+  transform-origin: right bottom;
+  transform: perspective(1000px) rotateX(-3deg) rotateY(-3deg) rotateZ(2deg);
+  box-shadow: -5px -5px 25px rgba(0, 0, 0, 0.3); }
+
+.tilt:nth-of-type(8):hover ~ .content,
+.tilt:nth-of-type(8).clicked ~ .content {
+  transform-origin: center bottom;
+  transform: perspective(1000px) rotateX(-3deg) rotateY(0) rotateZ(0deg);
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3); }
+
+.tilt:nth-of-type(9):hover ~ .content,
+.tilt:nth-of-type(9).clicked ~ .content {
+  transform-origin: left bottom;
+  transform: perspective(1000px) rotateX(-3deg) rotateY(3deg) rotateZ(-2deg);
+  box-shadow: -5px 5px 25px rgba(0, 0, 0, 0.3); }
+
+.tilt:hover ~ .content-front,
+.tilt.clicked ~ .content-front {
+  opacity: 1; }
+
+.tilt:hover ~ .content-back,
+.tilt.clicked ~ .content-back {
+  opacity: 0; }
+
+.tilt:focus {
+  outline: none; }
+
+/*# sourceMappingURL=style.css.map */

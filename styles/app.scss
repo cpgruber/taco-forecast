@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import './functions';
+
+@keyframes fade-in {
+  0%   {opacity: 0}
+  100% {opacity: 1}
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+section {
+  position: relative;
+  height: 250px;
+  width: 400px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+  opacity: 0;
+  animation: fade-in 1s linear 1s 1 forwards;
+}
+
+.content {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 4px;
+  background: rgba(255, 0, 0, 0.2);
+  box-shadow: 0 0 25px rgba(0, 0, 0, .3);
+  transform: rotateY(180deg);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+}
+
+.content-front {
+  opacity: 0;
+}
+
+.content-back {
+  background: linear-gradient(to right, rgba(255,175,75,1) 0%, rgba(255,146,10,1) 100%);
+}
+
+.content-back * {
+  transform: rotateY(180deg);
+}
+
+.hover {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-content: stretch;
+  flex-wrap: wrap;
+}
+
+.hover > .tilt {
+  height: calc(100% / 3);
+  flex-basis: calc(100% / 3);
+  z-index: 2;
+}
+
+@for $i from 1 through 9 {
+  .tilt:nth-of-type(#{$i}):hover ~ .content,
+  .tilt:nth-of-type(#{$i}).clicked ~ .content {
+    $x: transformX($i);
+    $y: transformY($i);
+    transform-origin: #{$x} #{$y};
+
+    $rX: rX($y);
+    $rY: rY($x);
+    $rZ: rZ($x, $y);
+    transform: perspective(1000px) rotateX($rX) rotateY($rY) rotateZ($rZ);
+
+    $bH: rX($y, 5px);
+    $bV: rY($x, 5px);
+    box-shadow: $bH $bV 25px rgba(0, 0, 0, .3);
+  }
+}
+
+.tilt:hover ~ .content-front,
+.tilt.clicked ~ .content-front {
+  opacity: 1;
+}
+
+.tilt:hover ~ .content-back,
+.tilt.clicked ~ .content-back {
+  opacity: 0;
+}
+
+.tilt:focus {
+  outline: none;
+}
