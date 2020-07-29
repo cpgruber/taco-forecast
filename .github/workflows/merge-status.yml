@@ -16,7 +16,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 10.17.0
-      - run: npm install -g node-fetch
+      - run: npm install --save-dev node-fetch
       - run: WHICH="BLOCKED" TOKEN="${{ secrets.STATUS_TOKEN }}" node scripts/update-status.js
 
   open_merges:
@@ -28,5 +28,5 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 10.17.0
-      - run: npm install -g node-fetch
+      - run: npm install --save-dev node-fetch
       - run: WHICH="OPEN" TOKEN="${{ secrets.STATUS_TOKEN }}" node scripts/update-status.js
