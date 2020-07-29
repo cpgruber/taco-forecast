@@ -1,3 +1,4 @@
 #!/usr/bin/env node
 
-console.log(process.env.EVENT);
+console.log(JSON.stringify(process));
+console.log(process.env.BODY, process.env.ISSUE);
