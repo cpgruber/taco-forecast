@@ -6,7 +6,7 @@ const happy = [
   'https://media.giphy.com/media/3ohs7YMlUQ6Jk8w0rS/giphy.gif'
 ];
 
-
+console.log('foooooooo');
 const sad = [
   'https://media.giphy.com/media/k61nOBRRBMxva/giphy.gif',
   'https://media.giphy.com/media/2rtQMJvhzOnRe/giphy.gif',
