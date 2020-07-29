@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: 10.17.0
       - run: npm install -g node-fetch
-      - run: node scripts/freeze.js
+      - run: WHICH="BLOCKED" TOKEN="${{ secrets.STATUS_TOKEN }}" node scripts/update-status.js
 
   open_merges:
     if: github.event.issue.number == 4 && startsWith(github.event.comment.body, 'OPEN')
@@ -29,4 +29,4 @@ jobs:
         with:
           node-version: 10.17.0
       - run: npm install -g node-fetch
-      - run: node scripts/thaw.js
+      - run: WHICH="OPEN" TOKEN="${{ secrets.STATUS_TOKEN }}" node scripts/update-status.js
