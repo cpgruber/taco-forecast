@@ -16,6 +16,5 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 10.17.0
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-      - run: echo "$GITHUB_CONTEXT"
+      - run: npm install --save-dev node-fetch
+      - run: SHA="${{ github.event.pull_request.head.sha }}" TOKEN="${{ secrets.STATUS_TOKEN }}" node scripts/set-status.js
