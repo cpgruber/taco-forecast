@@ -17,6 +17,7 @@ jobs:
         with:
           node-version: 10.17.0
         env:
-          EVENT: ${{ toJson(github.event) }}
+          ISSUE: github.event.issue.number
+          BODY: github.event.comment.body
       - run: npm install -g node-fetch
-      - run: EVENT="$EVENT" node scripts/update-status.js
+      - run: ISSUE='{{ $ISSUE }}' BODY='{{ $BODY }}' node scripts/update-status.js
