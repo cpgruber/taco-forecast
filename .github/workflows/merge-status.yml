@@ -8,7 +8,7 @@ on:
   issue_comment
 jobs:
   block_merges:
-    if: github.event.issue.number == 4 && startsWith(github.event.comment.body, 'BLOCKED')
+    if: github.event.issue.number == secrets.STATUS_ISSUE && startsWith(github.event.comment.body, 'BLOCKED')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -20,7 +20,7 @@ jobs:
       - run: WHICH="BLOCKED" TOKEN="${{ secrets.STATUS_TOKEN }}" node scripts/update-status.js
 
   open_merges:
-    if: github.event.issue.number == 4 && startsWith(github.event.comment.body, 'OPEN')
+    if: github.event.issue.number == secrets.STATUS_ISSUE && startsWith(github.event.comment.body, 'OPEN')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
