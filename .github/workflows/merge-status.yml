@@ -16,8 +16,5 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 10.17.0
-        env:
-          ISSUE: ${{ toJson(github).event.issue.number }}
-          BODY: foo
       - run: npm install -g node-fetch
-      - run: ISSUE="$ISSUE" BODY="$BODY" node scripts/update-status.js
+      - run: ISSUE="${{ github.event.issue.number }}" BODY="${{ github.event.comment.body }}" node scripts/update-status.js
