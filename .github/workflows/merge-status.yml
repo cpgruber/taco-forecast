@@ -20,4 +20,4 @@ jobs:
           ISSUE: github.event.issue.number
           BODY: github.event.comment.body
       - run: npm install -g node-fetch
-      - run: ISSUE='{{ $ISSUE }}' BODY='{{ $BODY }}' node scripts/update-status.js
+      - run: ISSUE="$ISSUE" BODY="$BODY" node scripts/update-status.js
