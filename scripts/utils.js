@@ -75,7 +75,7 @@ const getCurrentStatus = async () => {
 };
 
 const setStatus = async sha => {
-  const currentStatus = await getCurrentStatus;
+  const currentStatus = await getCurrentStatus();
   return updatePull(sha, currentStatus);
 };
 
