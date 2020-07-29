@@ -7,10 +7,16 @@ name: merge_status
 on:
   issue_comment
 jobs:
-  deploy:
+  update_status:
     runs-on: ubuntu-latest
+    name: check_status
     steps:
-      - name: logging
+      - uses: actions/checkout@v1
+      - name: Install deps
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.17.0
         env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+          EVENT: ${{ toJson(github.event) }}
+      - run: npm install -g node-fetch
+      - run: EVENT="$EVENT" node scripts/update-status.js
