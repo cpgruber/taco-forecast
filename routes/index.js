@@ -1,6 +1,6 @@
 const { getGif } = require('../utils/gifs');
 const { getDay, days } = require('../utils/days');
-
+console.log('foo');
 var express = require('express');
 var router = express.Router();
 
