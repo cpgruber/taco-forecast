@@ -1,5 +1,5 @@
 (function () {
-
+  console.log('fooooooo');
   const tilts = document.querySelectorAll('.tilt');
 
   tilts.forEach(el => {
