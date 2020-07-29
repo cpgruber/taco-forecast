@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-
+console.log('foo');
 var app = require('../app');
 var debug = require('debug')('tacoforecast:server');
 var http = require('http');
