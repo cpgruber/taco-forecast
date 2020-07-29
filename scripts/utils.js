@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 const OWNER = 'cpgruber';
 const REPO = 'taco-forecast';
-const TOKEN = process.env.TOKEN || '310de6009bbb2248119e931e235f5eddf4de4c4c';
+const TOKEN = process.env.TOKEN;
 const ISSUE_NUMBER = 4;
 
 const FROZEN = {
